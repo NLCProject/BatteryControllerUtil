@@ -1,0 +1,84 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.5.10'
+        springBootVersion = '2.7.3'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+    }
+}
+
+plugins {
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'BatteryControllerUtil'
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Application.MainKt'
+    }
+
+    // This line of code recursively collects and copies all of a project's files
+    // and adds them to the JAR itself. One can extend this task, to skip certain
+    // files or particular types at will
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations
+            .runtimeClasspath
+            .findAll { !it.path.endsWith(".pom") }
+            .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation group: 'org.springframework', name: 'spring-context-support', version: '5.3.22'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.7.3'
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.12.2'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '2.7.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.7.3'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.15.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.15.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: '2.15.0'
+    implementation group: 'org.json', name: 'json', version: '20210307'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.11'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: '1.5.10'
+    implementation group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: '1.5.10'
+    implementation group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-core', version: '1.6.4', ext: 'pom'
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-serialization-runtime', version: '1.0-M1-1.4.0-rc'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.7.3'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.8.2'
+    testImplementation group: 'org.jetbrains.kotlin', name: 'kotlin-test-junit5', version: '1.5.10'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.0'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.0'
+}

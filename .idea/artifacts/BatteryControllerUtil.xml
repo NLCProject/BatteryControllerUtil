@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BatteryControllerUtil">
+    <output-path>$PROJECT_DIR$/out/artifacts/BatteryControllerUtil</output-path>
+    <root id="archive" name="BatteryControllerUtil.jar">
+      <element id="module-output" name="BatteryControllerUtil.main" />
+    </root>
+  </artifact>
+</component>
