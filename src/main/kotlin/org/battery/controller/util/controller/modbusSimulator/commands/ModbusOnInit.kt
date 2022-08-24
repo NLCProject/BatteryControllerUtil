@@ -21,5 +21,5 @@ class ModbusOnInit(
     var availableCommands: List<ModbusCommand>
 ): ICommand {
 
-    override var typeUuid: String = "d18f428a-433b-45c4-be90-852262b8cdf2"
+    override var typeUuid: String = CommandUUID.modbusOnInit
 }

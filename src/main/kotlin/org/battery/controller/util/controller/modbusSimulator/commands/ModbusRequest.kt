@@ -18,5 +18,5 @@ class ModbusRequest(
     var value: String
 ): ICommand {
 
-    override var typeUuid: String = "cb3f55c5-9edc-46cb-9f68-75b15fc49bd8"
+    override var typeUuid: String = CommandUUID.modbusRequest
 }
