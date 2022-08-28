@@ -22,7 +22,7 @@ object RestControllerTemplate {
     /**
      *
      */
-    fun sendCommand(request: ModbusRequest, manufacturer: Manufacturer): ModbusResponse {
+    fun sendCommand(request: ModbusRequest, manufacturer: Manufacturer, idTag: String): ModbusResponse {
         val response = when {
             request.command.accessType.isRead() ->
                 sendGetCommand(
@@ -39,7 +39,7 @@ object RestControllerTemplate {
             else -> sendPostCommand(request = request, manufacturer = manufacturer)
         }
 
-        return ModbusResponse(command = request.command, value = response.body)
+        return ModbusResponse(command = request.command, value = response.body, idTag = idTag)
     }
 
     private fun sendGetCommand(command: ModbusCommand, manufacturer: Manufacturer): ResponseEntity<Register> {

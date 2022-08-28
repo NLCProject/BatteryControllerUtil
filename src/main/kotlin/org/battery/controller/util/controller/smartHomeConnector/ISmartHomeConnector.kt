@@ -13,7 +13,7 @@ interface ISmartHomeConnector {
     /**
      *
      */
-    fun registerManufacturer(manufacturer: Manufacturer)
+    fun registerManufacturer(manufacturer: Manufacturer, idTag: String)
 
     /**
      *

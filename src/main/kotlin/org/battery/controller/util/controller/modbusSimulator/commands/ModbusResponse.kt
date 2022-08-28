@@ -11,6 +11,11 @@ class ModbusResponse(
     /**
      *
      */
+    var idTag: String,
+
+    /**
+     *
+     */
     var command: ModbusCommand,
 
     /**

@@ -13,6 +13,11 @@ class ModbusOnInit(
     /**
      *
      */
+    var idTag: String,
+
+    /**
+     *
+     */
     var manufacturer: Manufacturer,
 
     /**
