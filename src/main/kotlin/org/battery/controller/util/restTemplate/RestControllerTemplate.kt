@@ -18,6 +18,7 @@ object RestControllerTemplate {
     private const val baseGetUrl = "http://localhost:8081/connector/get?command="
     private const val basePostUrl = "http://localhost:8081/connector/post?command="
     private val logger = LoggerFactory.getLogger(this::class.java)
+    private val restTemplate = RestTemplate()
 
     /**
      *
@@ -25,16 +26,10 @@ object RestControllerTemplate {
     fun sendCommand(request: ModbusRequest, manufacturer: Manufacturer, idTag: String): ModbusResponse {
         val response = when {
             request.command.accessType.isRead() ->
-                sendGetCommand(
-                    command = request.command,
-                    manufacturer = manufacturer
-                )
+                sendGetCommand(command = request.command, manufacturer = manufacturer)
 
             request.command.accessType.isReadAndWrite() && request.value.isEmpty() ->
-                sendGetCommand(
-                    command = request.command,
-                    manufacturer = manufacturer
-                )
+                sendGetCommand(command = request.command, manufacturer = manufacturer)
 
             else -> sendPostCommand(request = request, manufacturer = manufacturer)
         }
@@ -45,12 +40,12 @@ object RestControllerTemplate {
     private fun sendGetCommand(command: ModbusCommand, manufacturer: Manufacturer): ResponseEntity<Register> {
         val getUrl = baseGetUrl + command.name + "&=manufacturer$manufacturer"
         logger.info("Sending GET request to URL '$getUrl'")
-        return RestTemplate().getForEntity(getUrl, Register::class.java)
+        return restTemplate.getForEntity(getUrl, Register::class.java)
     }
 
     private fun sendPostCommand(request: ModbusRequest, manufacturer: Manufacturer): ResponseEntity<Register> {
         val postUrl = basePostUrl + request.command.name + "&=value${request.value}" + "&=manufacturer$manufacturer"
         logger.info("Sending POST request to URL '$postUrl'")
-        return RestTemplate().postForEntity(postUrl, null, Register::class.java)
+        return restTemplate.postForEntity(postUrl, null, Register::class.java)
     }
 }
