@@ -4,8 +4,8 @@ import org.battery.controller.util.controller.enums.AccessType
 import org.battery.controller.util.controller.enums.DataType
 import org.battery.controller.util.controller.enums.I18nKey
 import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
+import org.battery.controller.util.controller.register.DescriptorBuilder
 import org.battery.controller.util.controller.register.Register
-import org.battery.controller.util.controller.register.descriptors.value.ValueDescriptor
 import org.battery.controller.util.manufacturers.interfaces.IManufacturerDefinition
 import org.battery.controller.util.manufacturers.enums.Manufacturer
 
@@ -22,7 +22,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterModbusFirmwareVersion,
             dataType = DataType.UInt8Doubled,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "1.0"),
+            descriptor = DescriptorBuilder.buildValue(value = "1.0"),
             command = ModbusCommand.ModbusFirmwareVersion
         ),
 
@@ -31,7 +31,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterNumberOfRegisters,
             dataType = DataType.Uint16,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "6"),
+            descriptor = DescriptorBuilder.buildValue(value = "6"),
             command = ModbusCommand.NumberOfRegisters
         ),
 
@@ -40,7 +40,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterManufacturer,
             dataType = DataType.String,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "E3DC"),
+            descriptor = DescriptorBuilder.buildValue(value = "E3DC"),
             command = ModbusCommand.Manufacturer
         ),
 
@@ -49,7 +49,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterHardwareModel,
             dataType = DataType.String,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "S10 E AIO"),
+            descriptor = DescriptorBuilder.buildValue(value = "S10 E AIO"),
             command = ModbusCommand.HardwareModel
         ),
 
@@ -58,7 +58,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterSerialNumber,
             dataType = DataType.String,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "S10-12345678912"),
+            descriptor = DescriptorBuilder.buildValue(value = "S10-12345678912"),
             command = ModbusCommand.SerialNumber
         ),
 
@@ -67,7 +67,7 @@ object E3DCDefinition : IManufacturerDefinition {
             i18nKey = I18nKey.RegisterHardwareFirmwareVersion,
             dataType = DataType.String,
             accessType = AccessType.Read,
-            descriptor = ValueDescriptor(value = "2.0"),
+            descriptor = DescriptorBuilder.buildValue(value = "2.0"),
             command = ModbusCommand.HardwareFirmwareVersion
         )
     )

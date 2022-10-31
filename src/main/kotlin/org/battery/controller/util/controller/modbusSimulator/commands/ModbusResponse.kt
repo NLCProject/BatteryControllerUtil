@@ -1,11 +1,13 @@
 package org.battery.controller.util.controller.modbusSimulator.commands
 
+import kotlinx.serialization.Serializable
 import org.battery.controller.util.controller.modbusSimulator.ModbusCommand
 import org.battery.controller.util.controller.register.Register
 
 /**
  *
  */
+@Serializable
 class ModbusResponse(
 
     /**

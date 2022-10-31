@@ -38,13 +38,13 @@ object RestControllerTemplate {
     }
 
     private fun sendGetCommand(command: ModbusCommand, manufacturer: Manufacturer): ResponseEntity<Register> {
-        val getUrl = baseGetUrl + command.name + "&=manufacturer$manufacturer"
+        val getUrl = baseGetUrl + command.name + "&manufacturer=$manufacturer"
         logger.info("Sending GET request to URL '$getUrl'")
         return restTemplate.getForEntity(getUrl, Register::class.java)
     }
 
     private fun sendPostCommand(request: ModbusRequest, manufacturer: Manufacturer): ResponseEntity<Register> {
-        val postUrl = basePostUrl + request.command.name + "&=value${request.value}" + "&=manufacturer$manufacturer"
+        val postUrl = basePostUrl + request.command.name + "&=value${request.value}" + "&manufacturer=$manufacturer"
         logger.info("Sending POST request to URL '$postUrl'")
         return restTemplate.postForEntity(postUrl, null, Register::class.java)
     }
