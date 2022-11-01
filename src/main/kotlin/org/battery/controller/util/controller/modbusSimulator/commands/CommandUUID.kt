@@ -1,7 +1,7 @@
 package org.battery.controller.util.controller.modbusSimulator.commands
 
 /**
- *
+ * Modbus command UUID.
  */
 object CommandUUID {
 

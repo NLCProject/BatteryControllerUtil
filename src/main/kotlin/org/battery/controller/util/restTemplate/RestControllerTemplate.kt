@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.client.RestTemplate
 
 /**
- *
+ * Rest controller template.
  */
 object RestControllerTemplate {
 
@@ -21,7 +21,12 @@ object RestControllerTemplate {
     private val restTemplate = RestTemplate()
 
     /**
+     * Send Modbus command to manufacturer by the ID tag.
      *
+     * @param request .
+     * @param manufacturer .
+     * @param idTag .
+     * @return Modbus response.
      */
     fun sendCommand(request: ModbusRequest, manufacturer: Manufacturer, idTag: String): ModbusResponse {
         val response = when {

@@ -1,14 +1,17 @@
 package org.battery.controller.util.controller.enums
 
+/**
+ * I18n translation keys.
+ */
 enum class I18nKey(
 
     /**
-     *
+     * Key title.
      */
     var title: String,
 
     /**
-     * Empty if not required
+     * Additional description. Empty if not required.
      */
     var description: String = String()
 ) {

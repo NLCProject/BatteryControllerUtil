@@ -9,17 +9,17 @@ import org.battery.controller.util.controller.enums.I18nKey
 enum class ModbusCommand(
 
     /**
-     *
+     * Command ID.
      */
     var id: String,
 
     /**
-     *
+     * Command i18n translation key.
      */
     var i18nKey: I18nKey,
 
     /**
-     *
+     * Register access type.
      */
     var accessType: AccessType
 ) {

@@ -1,12 +1,12 @@
 package org.battery.controller.util.controller.enums
 
 /**
- *
+ * Register data type.
  */
 enum class DataType(
 
     /**
-     *
+     * Number of register bits.
      */
     var numberOfBits: Int
 ) {

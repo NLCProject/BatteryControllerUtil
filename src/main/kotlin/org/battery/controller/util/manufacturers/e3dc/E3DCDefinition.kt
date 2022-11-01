@@ -10,7 +10,7 @@ import org.battery.controller.util.manufacturers.interfaces.IManufacturerDefinit
 import org.battery.controller.util.manufacturers.enums.Manufacturer
 
 /**
- *
+ * E3DC manufacturer definition
  */
 object E3DCDefinition : IManufacturerDefinition {
 

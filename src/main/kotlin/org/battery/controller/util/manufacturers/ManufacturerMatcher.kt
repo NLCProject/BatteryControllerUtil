@@ -5,12 +5,15 @@ import org.battery.controller.util.manufacturers.enums.Manufacturer
 import org.battery.controller.util.manufacturers.interfaces.IManufacturerDefinition
 
 /**
- *
+ * Util to match manufacturer.
  */
 object ManufacturerMatcher {
 
     /**
+     * Get manufacturer definition.
      *
+     * @param manufacturer .
+     * @return Manufacturer definition.
      */
     fun getManufacturerDefinition(manufacturer: Manufacturer): IManufacturerDefinition =
         when (manufacturer) {
@@ -18,7 +21,8 @@ object ManufacturerMatcher {
         }
 
     /**
-     *
+     * Gets all manufacturer definitions.
+     * @return List of manufacturer definitions.
      */
     fun getAllManufacturerDefinitions(): List<IManufacturerDefinition> = listOf(E3DCDefinition)
 }
